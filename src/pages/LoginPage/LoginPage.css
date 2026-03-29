@@ -1,0 +1,100 @@
+.login-page {
+  min-height: 100vh;
+  background: var(--state-layers-background-color-main-bg-primary-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+}
+
+.login-card {
+  background: var(--state-layers-background-color-main-bg-primary);
+  border: 1px solid var(--state-layers-border-color-main-border-primary);
+  border-radius: var(--radius-base);
+  padding: var(--spacing-10);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.login-card__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  text-align: center;
+}
+
+.login-card__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.login-card__title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.login-card__subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+}
+
+.login-card__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.login-card__form .text-field { width: 100%; }
+.login-card__form .btn { width: 100%; justify-content: center; }
+
+.login-card__pw-wrap { position: relative; }
+
+.login-card__pw-wrap .text-field__input { padding-right: 36px; }
+
+.login-card__pw-toggle {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.login-card__pw-toggle:hover {
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.login-card__error {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--schemes-error-error-600);
+}
+
+.login-card__hint {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+  text-align: center;
+  border-top: 1px solid var(--state-layers-border-color-main-border-primary);
+  padding-top: var(--spacing-4);
+}

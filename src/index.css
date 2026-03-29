@@ -1,0 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+#root { width: 100%; min-height: 100vh; margin: 0; padding: 0; }
+.page-content { padding: 32px 120px; }
+@media (max-width: 768px) { .page-content { padding: 24px 48px; } }
+@media (max-width: 480px) { .page-content { padding: 16px 16px; } }
