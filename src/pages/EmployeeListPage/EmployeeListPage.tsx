@@ -38,11 +38,10 @@ function EmployeeModal({ mode, initial, onClose, onSaved }: ModalProps) {
   }
 
   async function uploadPhoto(file: File): Promise<string | null> {
-    const ext  = file.name.split('.').pop()
-    const path = `${Date.now()}.${ext}`
-    const { error } = await supabase.storage.from('Avatar').upload(path, file, { upsert: true })
+    const fileName = `avatar-${Date.now()}-${file.name}`
+    const { error } = await supabase.storage.from('Avatar').upload(fileName, file, { upsert: true })
     if (error) { console.error('Photo upload error:', error); return null }
-    const { data } = supabase.storage.from('Avatar').getPublicUrl(path)
+    const { data } = supabase.storage.from('Avatar').getPublicUrl(fileName)
     return data.publicUrl
   }
 
