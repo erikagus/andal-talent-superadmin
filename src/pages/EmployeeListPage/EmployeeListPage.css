@@ -190,6 +190,11 @@
   color: var(--state-layers-text-color-state-text-warning-primary);
 }
 
+.emp-badge--admin {
+  background: var(--state-layers-background-color-brand-bg-brand-primary);
+  color: var(--state-layers-text-color-brand-text-brand-secondary);
+}
+
 /* Progress */
 .emp-table__progress {
   display: flex;
@@ -246,4 +251,238 @@
 .emp-table__btn--del:hover {
   background: var(--state-layers-background-color-state-bg-error-primary);
   color: var(--state-layers-foreground-color-state-fg-error-primary);
+}
+
+.emp-table__avatar--img {
+  object-fit: cover;
+}
+
+.emp-table__position {
+  font-size: var(--font-size-xs);
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+  margin-top: 1px;
+}
+
+/* ── Modal backdrop ── */
+.emp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-4);
+}
+
+/* ── Employee form modal ── */
+.emp-modal {
+  background: var(--state-layers-background-color-main-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.emp-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-5) var(--spacing-6);
+  border-bottom: 1px solid var(--state-layers-border-color-main-border-secondary);
+  flex-shrink: 0;
+}
+
+.emp-modal__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.emp-modal__close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: var(--radius-xs);
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.emp-modal__close:hover {
+  background: var(--state-layers-background-color-main-bg-primary-hover);
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.emp-modal__body {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  overflow-y: auto;
+}
+
+/* Photo upload */
+.emp-modal__photo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.emp-modal__photo-preview {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--state-layers-background-color-main-bg-secondary);
+  border: 1px solid var(--state-layers-border-color-main-border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  color: var(--state-layers-foreground-color-main-fg-tertiary);
+}
+
+.emp-modal__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.emp-modal__photo-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.emp-modal__photo-input { display: none; }
+
+.emp-modal__photo-remove {
+  background: none;
+  border: none;
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  color: var(--state-layers-foreground-color-state-fg-error-primary);
+  cursor: pointer;
+  padding: 0;
+}
+
+.emp-modal__photo-remove:hover { text-decoration: underline; }
+
+/* Fields */
+.emp-modal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+.emp-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.emp-modal__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.emp-modal__req { color: var(--schemes-error-error-600); margin-left: 2px; }
+
+.emp-modal__input {
+  height: 38px;
+  padding: 0 var(--spacing-3);
+  border: 1px solid var(--state-layers-border-color-main-border-primary);
+  border-radius: var(--radius-xs);
+  background: var(--state-layers-background-color-main-bg-primary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  color: var(--state-layers-text-color-main-text-primary);
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.emp-modal__input:focus {
+  border-color: var(--state-layers-border-color-brand-border-brand-solid);
+  box-shadow: inset 0 0 0 1px var(--state-layers-border-color-brand-border-brand-solid);
+}
+
+.emp-modal__input::placeholder { color: var(--state-layers-foreground-color-main-fg-tertiary); }
+
+.emp-modal__error {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--schemes-error-error-600);
+}
+
+.emp-modal__footer {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--state-layers-border-color-main-border-secondary);
+  flex-shrink: 0;
+}
+
+/* ── Delete confirm dialog ── */
+.emp-confirm {
+  background: var(--state-layers-background-color-main-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--spacing-7) var(--spacing-6) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-3);
+}
+
+.emp-confirm__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--state-layers-background-color-state-bg-error-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-1);
+}
+
+.emp-confirm__icon {
+  color: var(--state-layers-foreground-color-state-fg-error-primary);
+}
+
+.emp-confirm__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--state-layers-text-color-main-text-primary);
+}
+
+.emp-confirm__body {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--state-layers-text-color-main-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.emp-confirm__actions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-2);
 }

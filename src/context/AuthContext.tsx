@@ -1,24 +1,30 @@
 import { createContext, useContext, useState } from 'react'
+import { supabase } from '../lib/supabase'
 
-interface SuperAdmin { email: string; name: string }
+interface SuperAdmin { id: string; email: string; name: string }
+
 interface AuthContextValue {
   currentUser: SuperAdmin | null
-  login: (email: string, password: string) => boolean
+  login: (email: string, password: string) => Promise<boolean>
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
-const CREDS = { email: 'superadmin@andal.com', password: 'superadmin123', name: 'Super Admin' }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState<SuperAdmin | null>(null)
 
-  function login(email: string, password: string) {
-    if (email === CREDS.email && password === CREDS.password) {
-      setCurrentUser({ email: CREDS.email, name: CREDS.name })
-      return true
-    }
-    return false
+  async function login(email: string, password: string): Promise<boolean> {
+    const { data, error } = await supabase
+      .from('users')
+      .select('id, name, email')
+      .eq('email', email)
+      .eq('password', password)
+      .eq('role', 'superadmin')
+      .single()
+    if (error || !data) return false
+    setCurrentUser({ id: data.id, name: data.name, email: data.email })
+    return true
   }
 
   function logout() { setCurrentUser(null) }

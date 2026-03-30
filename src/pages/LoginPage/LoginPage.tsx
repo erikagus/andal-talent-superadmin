@@ -12,11 +12,15 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [showPw,   setShowPw]   = useState(false)
   const [error,    setError]    = useState('')
+  const [loading,  setLoading]  = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setError('')
-    if (login(email.trim(), password)) navigate('/')
+    setLoading(true)
+    const ok = await login(email.trim(), password)
+    setLoading(false)
+    if (ok) navigate('/')
     else setError('Invalid email or password.')
   }
 
@@ -61,8 +65,8 @@ export default function LoginPage() {
 
           {error && <p className="login-card__error" role="alert">{error}</p>}
 
-          <Button variant="Solid" size="Medium" color="Primary" type="submit">
-            Sign In
+          <Button variant="Solid" size="Medium" color="Primary" type="submit" disabled={loading}>
+            {loading ? 'Signing in…' : 'Sign In'}
           </Button>
         </form>
 
